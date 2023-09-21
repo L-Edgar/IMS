@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 50px;
+    margin-left: 270%;
     width: 600px;
     background: #fff;
     padding-bottom: 30px;
