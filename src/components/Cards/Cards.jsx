@@ -17,6 +17,7 @@ const Cards=()=> {
                 png={card.png}
                 series={card.series}
                 />
+               
             </div>
         )
       })}

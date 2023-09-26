@@ -1,4 +1,7 @@
 import {UilEstate,UilUsersAlt,UilPackage,UilChart,UilSignOutAlt,UilClipboardAlt,UilMoneyWithdrawal,UilUsdSquare} from '@iconscout/react-unicons';
+import img1 from '../components/Assets/1640517901247.png'
+import img2 from '../components/Assets/IMG_20220719_115016_9.jpg'
+import img3 from '../components/Assets/logo.jpg'
 
 export const SidebarData=[
     {
@@ -11,7 +14,7 @@ export const SidebarData=[
     },
     {
         icon: UilUsersAlt,
-        heading:'Departments'
+        heading:'Branches'
     },
     {
         icon: UilPackage,
@@ -73,4 +76,27 @@ export const CardsData=[
         ],
     },
     
+]
+
+
+
+export const UpdateData=[
+    {
+        img:img1,
+        name:"Andrew",
+        noti:" has ordered an apple smart watch",
+        time:"10 minutes ago"
+    },
+    {
+        img:img2,
+        name:"James",
+        noti:"has recieved samsung gadget for charging",
+        time:"30 minutes ago"
+    },
+    {
+        img:img3,
+        name:"Wilson",
+        noti:" has ordered apple smart watch, samsung battery",
+        time:"1 minutes ago"
+    },
 ]

@@ -4,6 +4,7 @@ import LoginSignup from "./components/LoginSignUp/LoginSignup";
 import SideBar from "./components/SideBar/SideBar";
 import { Routes, Route } from "react-router-dom";
 import MainDash from "./components/MainDash/MainDash";
+import RightSide from "./components/RightSide/RightSide";
 
 function App() {
   return (
@@ -11,9 +12,12 @@ function App() {
       <div className="App">
         <div className="AppGlass">
           <SideBar/>
+          
           <MainDash/>
+          <RightSide/>
+          
           <Routes>
-            <Route path='/' element={<LoginSignup/>}/>
+            <Route path='LoginSignup/' element={<LoginSignup/>}/>
           </Routes>
         </div>
       </div>

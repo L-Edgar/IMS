@@ -3,3 +3,16 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+@media (max-width:1200px){
+    .MainDash{
+        justify-content: flex-end;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width:768px){
+    .MainDash{
+        align-items: center;
+    }
+}

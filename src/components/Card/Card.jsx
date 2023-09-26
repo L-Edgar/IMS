@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LayoutGroup } from 'framer-motion'
+import { LayoutGroup,motion } from 'framer-motion'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './card.css'
@@ -11,9 +11,8 @@ const Card = (props) => {
   return (
     <LayoutGroup>
       {
-        expanded?(
-          <ExpandedCard param={props} setExpanded={()=>setExpanded(false)}/>
-        ):
+        expanded?
+          <ExpandedCard param={props} setExpanded={()=>setExpanded(false)}/>:
         <CompactCard param={props} setExpanded={()=>setExpanded(true)}/>
       }
     </LayoutGroup>
@@ -24,11 +23,12 @@ const Card = (props) => {
 function CompactCard({param,setExpanded}) {
   const Png=param.png;
   return(
-    <div className="CompactCard"
+    <motion.div className="CompactCard"
     style={{
       background:param.color.backGround,
       boxShadow:param.color.boxShadow
     }}
+    layoutId='expandableCard'
     onClick={setExpanded}
     >
       
@@ -45,10 +45,11 @@ function CompactCard({param,setExpanded}) {
         <span>${param.value}</span>
         <span>Last 24 hours</span>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
+//expanded card
 function ExpandedCard({param,setExpanded}){
   const data={
     options:{
@@ -79,7 +80,7 @@ function ExpandedCard({param,setExpanded}){
     },
     tooltip:{
       x:{
-        format:"ss/MM/yy HH:mm",
+        format:"dd/MM/yy HH:mm",
       },
       grid:{
         show:true
@@ -100,25 +101,39 @@ function ExpandedCard({param,setExpanded}){
       
     }
   }
-  return(
-    <div className="ExpandedCard"
-    style={{
-      background:param.color.backGround,
-      boxShadow:param.color.boxShadow
-    }}
-    >
-<div>
-  <UilTimes onClick={setExpanded}/>
-  <span>
-    {param.title}
-  </span>
-  <div className="chartContainer">
-    <Chart series={param.series} type='area' Options={data.options}/>
-  </div>
-  <span>Last 24 hours</span>
-</div>
+  if (data) {
+    return(
+      <motion.div className="ExpandedCard"
+      style={{
+        background:param.color.backGround,
+        boxShadow:param.color.boxShadow
+      }}
+      layoutId='expandableCard'
+      >
+  <div
+  style={{alignSelf:'flex-end',cursor:'pointer',color:'white'}}
+  >
+    <UilTimes onClick={setExpanded}
+    
+    />
+    
     </div>
-  )
+    <span>
+      {param.title}
+    </span>
+    <div className="chartContainer">
+      <Chart series={param.series} type='area' options={data.options}/>
+    </div>
+    <span>Last 24 hours</span>
+  </motion.div>
+      
+    )
+   
+  } else {
+    // Handle the case where myObject or myObject.type is undefined
+    console.error("This is the error");
+  }
+  
 }
 
 export default Card
